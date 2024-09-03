@@ -59,6 +59,7 @@ class MovieProvider with ChangeNotifier {
           .toList();
 
       final movie = Movie(
+        id: data['id'],
         title: data['title'],
         posterPath: data['poster_path'],
         overview: data['overview'],

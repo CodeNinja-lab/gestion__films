@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 class Movie {
+  final int id; // Ajout de l'attribut id
   final String title;
   final String posterPath;
   final String overview;
@@ -11,6 +10,7 @@ class Movie {
   final String? trailerKey;
 
   Movie({
+    required this.id, // Ajout de l'id au constructeur
     required this.title,
     required this.posterPath,
     required this.overview,
@@ -23,23 +23,25 @@ class Movie {
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
+      id: json['id'], // Extraction de l'id depuis le JSON
       title: json['title'],
       posterPath: json['poster_path'],
       overview: json['overview'],
       genreIds: List<int>.from(json['genre_ids']),
       actors: json.containsKey('actors')
           ? List<String>.from(json['actors'].map((actor) => actor['name']))
-          : [], // Extraction des noms des acteurs si disponibles
+          : [],
       directors: json.containsKey('directors')
           ? List<String>.from(
               json['directors'].map((director) => director['name']))
-          : [], // Extraction des noms des réalisateurs si disponibles
+          : [],
       releaseDate: DateTime.parse(json['release_date']),
       trailerKey: json['trailer_key'], // Clé de la bande-annonce si disponible
     );
   }
 
   Movie copyWith({
+    int? id,
     String? title,
     String? posterPath,
     String? overview,
@@ -50,6 +52,7 @@ class Movie {
     String? trailerKey,
   }) {
     return Movie(
+      id: id ?? this.id,
       title: title ?? this.title,
       posterPath: posterPath ?? this.posterPath,
       overview: overview ?? this.overview,

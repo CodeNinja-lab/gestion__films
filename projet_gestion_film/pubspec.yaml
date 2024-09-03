@@ -36,7 +36,7 @@ dependencies:
   path: ^1.8.0
   flutter_dotenv: ^5.0.2
   url_launcher: ^6.0.9
-  youtube_player_flutter: ^8.1.0  # Ajoutez cette ligne
+  youtube_player_flutter: ^8.0.0
   video_player: ^2.5.1
 
 
